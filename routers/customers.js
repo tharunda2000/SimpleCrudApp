@@ -15,6 +15,19 @@ router.get('/',async (req,res)=>{
     
 })
 
+router.get('/:id',async (req,res)=>{
+
+    try{
+
+        const customer = await Customer.findById(req.params.id)
+        res.json(customer)
+
+    }catch(err){
+        res.send('error'+err)
+    }
+      
+})
+
 router.post('/',async (req,res)=>{
 
     const customer = new Customer({
@@ -32,6 +45,19 @@ router.post('/',async (req,res)=>{
 
     }catch(err){
         res.send('error'+err)
+    }
+})
+
+router.patch('/:id',async(req,res)=>{
+    try{
+
+        const customer = await Customer.findById(req.params.id)
+        customer.member = req.body.member
+        const a1 = await customer.save()
+        res.json(a1)
+
+    }catch(err){
+        res.send('Error'+err)
     }
 })
 
