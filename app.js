@@ -16,6 +16,9 @@ con.on('open',()=>{
     console.log('database connected ....')
 })
 
+app.use(express.json())
+
+
 //routes
 
 //customer route
