@@ -61,4 +61,10 @@ router.patch('/:id',async(req,res)=>{
     }
 })
 
+router.delete('/:id',async (req,res)=>{
+    const customer =await Customer.findById(req.params.id)
+    const a1 = await customer.deleteOne()
+    res.json(a1)
+})
+
 module.exports = router
